@@ -46,6 +46,31 @@ namespace BankApplication
                     return true;
                 }
             }
+            public class CheckingsAccount : Account
+            {
+                private decimal Fee;
+                public CheckingsAccount(decimal y, decimal f) :
+                    base(y)
+                {
+                    Fee = f;
+                }
+                public override bool Debit(decimal x)
+                {
+                    if (base.Debit(x) == true)
+                    {
+                        Balance -= Fee;
+                        return true;
+                    }
+                    else
+                        return false;
+                }
+                public override void Credit(decimal x)
+                {
+                    base.Credit(x);
+                    Balance -= Fee;
+                }
+            }
+
         }
         static void Main(string[] args)
         {
