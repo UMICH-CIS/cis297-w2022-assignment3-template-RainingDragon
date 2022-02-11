@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Charles Simms
+// CIS 297
+// Assignment 3 Bank Application
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +11,7 @@ namespace BankApplication
 {
     class Program
     {
-        public class Account
+        public class Account // Account class that returns balance
         {
             private decimal balance;
             public decimal Balance
@@ -70,7 +73,19 @@ namespace BankApplication
                     Balance -= Fee;
                 }
             }
-
+            public class SavingsAccount : Account
+            {
+                decimal intRate;
+                public SavingsAccount(decimal y, decimal rate) :
+                    base(y)
+                {
+                    intRate = rate;
+                }
+                public decimal CalculateInterest()
+                {
+                    return intRate * Balance;
+                }
+            }
         }
         static void Main(string[] args)
         {
