@@ -86,9 +86,20 @@ namespace BankApplication
                     return intRate * Balance;
                 }
             }
-        }
-        static void Main(string[] args)
-        {
+            static void Main(string[] args)
+            {
+                SavingsAccount customer1 = new SavingsAccount(50, 0.2M);
+                customer1.Credit(customer1.CalculateInterest());
+                Console.WriteLine("Balance after interest amount in saving account: {0}", customer1.Balance);
+                CheckingsAccount customer2 = new CheckingsAccount(50, 0.50M);
+                customer2.Credit(17.26M);
+                Console.WriteLine("Balance after depositing checking account: {0}", customer2.Balance);
+                customer2.Debit(12.24M);
+                Console.WriteLine("Balance after withdrawing checking account: {0}", customer2.Balance);
+                Console.WriteLine("=====================================================================");
+                Console.WriteLine("Enter any number to exit: ");
+                Console.WriteLine(int.Parse(Console.ReadLine()));
+            }
         }
     }
 }
